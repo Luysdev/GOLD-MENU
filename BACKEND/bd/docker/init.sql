@@ -39,4 +39,17 @@ CREATE TABLE Admin (
   adminsenha VARCHAR(100) NOT NULL,
 );
 
+CREATE TABLE Relatorio (
+  relacodigo SMALLINT PRIMARY KEY,
+  reladatainicio DATE,
+  reladatafim DATE,
+  comacodigo int,
+  FOREIGN KEY (comacodigo) REFERENCES Comanda(comacodigo)
+);
 
+CREATE TABLE Comanda (
+  comacodigo SMALLINT PRIMARY KEY,
+  mesacodigo int,  
+  FOREIGN KEY (mesacodigo) REFERENCES Mesa(mesacodigo)
+  FOREIGN KEY (pedicodigo) REFERENCES Pedido(pedicodigo)
+);

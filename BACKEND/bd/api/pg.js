@@ -36,4 +36,7 @@ export const closeConnectDB = async () => {
   }
 };
 
-
+/**
+ * Exporta o pool para uso nas queries
+ */
+export default pool;

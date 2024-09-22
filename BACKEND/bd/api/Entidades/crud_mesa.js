@@ -1,8 +1,6 @@
-import pool from "../pg"; // Certifique-se de que o pool está corretamente configurado para conectar ao banco de dados
-import { app } from "../index";
+import pool from "../pg.js"; // Certifique-se de que o pool está corretamente configurado para conectar ao banco de dados
 
-
-export const Mesa = () => {
+export const Mesa = (app) => {
     
     // CREATE (POST)
     function mesaPost() {
