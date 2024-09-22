@@ -15,7 +15,7 @@ export default function Login() {
                 </View>
             </View>
             <View style={styles.containerLogo}>
-                <Image source={"../../assets/logo-gold-premium.png"}/>
+                <Image source={logoImage}/>
             </View>
         </View>
     );
@@ -119,5 +119,7 @@ const styles = StyleSheet.create({
         height: "100%",
         flex: 1,
         display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
     },
 });
