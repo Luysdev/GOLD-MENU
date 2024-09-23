@@ -11,7 +11,7 @@ export default function Login() {
                     <TextInput placeholder="Informe o seu CPF" style={styles.inputCPF}/>
                     <Text style={styles.labelSenha}>SENHA</Text>
                     <TextInput placeholder="Informe a sua senha" secureTextEntry={true} style={styles.inputSenha}/>
-                    <Pressable style={styles.textButton} onPress={()=>{console.log("Erick")}}>Entrar</Pressable>
+                    <Pressable style={styles.textButton}>Entrar</Pressable>
                 </View>
             </View>
             <View style={styles.containerLogo}>
