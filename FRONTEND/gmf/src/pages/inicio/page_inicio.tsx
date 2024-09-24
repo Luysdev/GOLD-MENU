@@ -1,9 +1,11 @@
 import {View, Text, StyleSheet, TouchableOpacity} from "react-native"
+import Icon from "react-native-vector-icons/AntDesign"
 
 export default function Inicio () {
     return (
         <View style={styles.containerPrincipal}>
             <View style={styles.containerNavBarLateral}>
+                <Icon name="esboço da casa" size={25} color="black"/>
                 <TouchableOpacity style={styles.navBarItens}>
                     <Text style={styles.navBarLabel}>Início</Text>
                 </TouchableOpacity>
