@@ -3,10 +3,14 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Entypo from '@expo/vector-icons/Entypo';
+import logoImage from "../../assets/logo-gold-premium-branco.png"
 
 export default function ComponentNav() {
     return (
         <View style={styles.containerNavBarLateral}>
+            <View style={styles.containerLogo}>
+                <Image source={logoImage} style={styles.logo}/>
+            </View>
             <TouchableOpacity style={styles.navBarItens}>
                 <MaterialCommunityIcons name="home-outline" size={80} color="white"/>
                 <Text style={styles.navBarLabel}>Início</Text>
@@ -37,27 +41,27 @@ const styles = StyleSheet.create ({
         width: 240,
         height: "100%",
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         alignItems: "center",
         marginRight: 1130,
     },
 
     containerLogo: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        padding: 20,
     },
 
     logo: {
-        width: 120,
-        height:120,
+        width: 150,
+        height: 150,
     },
 
     navBarItens: {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 90,
+        marginTop: 50,
+        marginBottom: 30,
     },
 
     navBarLabel: {
