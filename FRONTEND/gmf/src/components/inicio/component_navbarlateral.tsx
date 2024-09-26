@@ -16,19 +16,19 @@ export default function ComponentNav() {
                 <Text style={styles.navBarLabel}>Início</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.navBarItens}>
-                <FontAwesome5 name="hamburger" size={60} color="white"/>
+                <FontAwesome5 name="hamburger" size={70} color="white"/>
                 <Text style={styles.navBarLabel}>Hambúrguer</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.navBarItens}>
-                <Ionicons name="pizza-outline" size={60} color="white"/>
+                <Ionicons name="pizza-outline" size={70} color="white"/>
                 <Text style={styles.navBarLabel}>Pizzas</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.navBarItens}>
-                <Ionicons name="beer" size={60} color="white"/>
+                <Ionicons name="beer" size={70} color="white"/>
                 <Text style={styles.navBarLabel}>Bebidas</Text>           
             </TouchableOpacity>
             <TouchableOpacity style={styles.navBarItens}>
-                <Entypo name="drink" size={60} color="white"/>
+                <Entypo name="drink" size={70} color="white"/>
                 <Text style={styles.navBarLabel}>Drinks</Text>
             </TouchableOpacity>
         </View>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create ({
         width: 240,
         height: "100%",
         display: "flex",
-        justifyContent: "flex-start",
+        justifyContent: "center",
         alignItems: "center",
         marginRight: 1130,
     },
@@ -61,7 +61,7 @@ const styles = StyleSheet.create ({
         justifyContent: "center",
         alignItems: "center",
         marginTop: 50,
-        marginBottom: 30,
+        marginBottom: 20,
     },
 
     navBarLabel: {
