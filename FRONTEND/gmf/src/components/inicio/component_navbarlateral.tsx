@@ -5,14 +5,14 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Entypo from '@expo/vector-icons/Entypo';
 import logoImage from "../../assets/logo-gold-premium-branco.png"
 
-export default function ComponentNav() {
+export default function ComponentNav() {     
     return (
         <View style={styles.containerNavBarLateral}>
             <View style={styles.containerLogo}>
                 <Image source={logoImage} style={styles.logo}/>
             </View>
             <TouchableOpacity style={styles.navBarItens}>
-                <MaterialCommunityIcons name="home-outline" size={80} color="white"/>
+                <MaterialCommunityIcons name="home-outline" size={90} color="white"/>
                 <Text style={styles.navBarLabel}>Início</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.navBarItens}>
