@@ -44,6 +44,7 @@ const styles = StyleSheet.create ({
         justifyContent: "center",
         alignItems: "center",
         marginRight: 1130,
+        position: "absolute"
     },
 
     containerLogo: {
