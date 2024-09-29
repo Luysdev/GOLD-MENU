@@ -11,6 +11,29 @@ export default  function componentNav () {
                 <MaterialIcons name="menu" size={50} color="white" />
                 <Text style={styles.navBarLabel}>Menu</Text>
             </TouchableOpacity>
+            <View style={styles.containerSubNavBarMenu}>
+                <TouchableOpacity style={styles.subNavbarItens}>
+                    <Text style={styles.subNavBarLabel}>Cadastro de Produtos</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.subNavbarItens}>
+                    <Text style={styles.subNavBarLabel}>Cadastro de Usuário</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.subNavbarItens}>
+                    <Text style={styles.subNavBarLabel}>Gerenciar Produtos</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.subNavbarItens}>
+                    <Text style={styles.subNavBarLabel}>Gerenciar Usuários</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.subNavbarItens}>
+                    <Text style={styles.subNavBarLabel}>Emissão de Relatórios</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.subNavbarItens}>
+                    <Text style={styles.subNavBarLabel}>Pagamentos</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.subNavbarItens}>
+                    <Text style={styles.subNavBarLabel}>Sair</Text>
+                </TouchableOpacity>
+            </View>
             <TouchableOpacity style={styles.navBarItens}>
                 <FontAwesome5 name="history" size={37} color="white" />
                 <Text style={styles.navBarLabel}>Histórico de Pedidos</Text>
@@ -54,5 +77,29 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontSize: 23,
         marginLeft: 13,
+    },
+
+    containerSubNavBarMenu: {
+        backgroundColor: "#85714D",
+        width: 245,
+        height: 500,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        position: "absolute",
+        top: 85,
+        left: 0,
+    },
+
+    subNavbarItens: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        margin: 20,
+    },
+
+    subNavBarLabel: {
+        color: "white",
+        fontSize: 21,
     },
 });
