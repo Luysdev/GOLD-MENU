@@ -5,7 +5,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Entypo from '@expo/vector-icons/Entypo';
 import logoImage from "../../assets/logo-gold-premium-branco.png"
 
-export default function ComponentNav() {     
+export default function ComponentNav() {   
     return (
         <View style={styles.containerNavBarLateral}>
             <View style={styles.containerLogo}>

@@ -1,16 +1,20 @@
 import {View, Text, StyleSheet, TouchableOpacity} from  "react-native"
+import { useState } from "react";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
 export default  function componentNav () {
+    const [showSubNavBar, setShowSubNavBar] = useState(false);
+
     return (
         <View style={styles.containerNavBarSuperior}>
-            <TouchableOpacity style={styles.navBarItens}>
-                <MaterialIcons name="menu" size={50} color="white" />
+            <TouchableOpacity style={styles.navBarItens} onPress={() => setShowSubNavBar(!showSubNavBar)}>
+                <MaterialIcons name="menu" size={50} color="white"/>
                 <Text style={styles.navBarLabel}>Menu</Text>
             </TouchableOpacity>
+            {showSubNavBar && (
             <View style={styles.containerSubNavBarMenu}>
                 <TouchableOpacity style={styles.subNavbarItens}>
                     <Text style={styles.subNavBarLabel}>Cadastro de Produtos</Text>
@@ -34,6 +38,7 @@ export default  function componentNav () {
                     <Text style={styles.subNavBarLabel}>Sair</Text>
                 </TouchableOpacity>
             </View>
+            )}
             <TouchableOpacity style={styles.navBarItens}>
                 <FontAwesome5 name="history" size={37} color="white" />
                 <Text style={styles.navBarLabel}>Histórico de Pedidos</Text>

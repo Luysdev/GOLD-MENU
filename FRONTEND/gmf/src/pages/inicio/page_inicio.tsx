@@ -10,7 +10,7 @@ export default function Inicio () {
     return (
         <View style={styles.containerPrincipal}>
             <ComponentNavBarLateral/>
-            <ComponentNavBarSuperiorFuncionario/>
+            <ComponentNavBarSuperiorAdministrador/>
         </View>
     );
 }
