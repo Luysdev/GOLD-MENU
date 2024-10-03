@@ -4,12 +4,13 @@ import ComponentNavBarLateral from "@/src/components/inicio/component_navbarlate
 import ComponentNav from "@/src/components/inicio/component_navbarlateral";
 import ComponentNavBarSuperiorCliente from "@/src/components/inicio/component_navbarsuperiorcliente"
 import ComponentNavBarSuperiorAdministrador from "@/src/components/inicio/component_navbarsuperioraadministrador"
+import ComponentNavBarSuperiorFuncionario from "@/src/components/inicio/component_navbarsuperiorfuncionario"
 
 export default function Inicio () {
     return (
         <View style={styles.containerPrincipal}>
             <ComponentNavBarLateral/>
-            <ComponentNavBarSuperiorAdministrador/>
+            <ComponentNavBarSuperiorFuncionario/>
         </View>
     );
 }
