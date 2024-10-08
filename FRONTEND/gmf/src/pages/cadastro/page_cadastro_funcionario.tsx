@@ -6,7 +6,6 @@ export default function CadastroFuncionario () {
     return (
         <View style={styles.containerPrincipal}>
             <ComponentNavBarLateral/>
-            <ComponentNavBarSuperiorAdministrador/>
             <View style={styles.containerCadastroFuncionario}>
                 <Text style={styles.labelCadastroFuncionario}>Cadastro de Funcionário</Text>
                 <View style={styles.containerInput}>
@@ -29,6 +28,7 @@ export default function CadastroFuncionario () {
                     </View>
                 </View>
             </View>
+            <ComponentNavBarSuperiorAdministrador/>
         </View>
     );
 }

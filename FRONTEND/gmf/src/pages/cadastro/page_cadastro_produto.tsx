@@ -6,7 +6,6 @@ export default function CadastroProduto () {
     return (
         <View style={styles.containerPrincipal}>
             <ComponentNavBarLateral/>
-            <ComponentNavBarSuperiorAdministrador/>
             <View style={styles.containerCadastroProduto}> 
                 <Text style={styles.labelCadastroProduto}>Cadastro de Produtos</Text>
                 <View style={styles.containerInput}>
@@ -19,6 +18,7 @@ export default function CadastroProduto () {
                     <Pressable style={styles.textButton}>Cadastrar</Pressable>
                 </View>
             </View>
+            <ComponentNavBarSuperiorAdministrador/>
         </View>
     );
 }
