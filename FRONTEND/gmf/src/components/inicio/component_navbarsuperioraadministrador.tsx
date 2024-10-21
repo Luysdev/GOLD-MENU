@@ -4,8 +4,12 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { useRouter } from 'expo-router';
 
 export default  function componentNav () {
+
+    const router = useRouter();
+
     const [showSubNavBar, setShowSubNavBar] = useState(false);
 
     return (
@@ -16,7 +20,7 @@ export default  function componentNav () {
             </TouchableOpacity>
             {showSubNavBar && (
             <View style={styles.containerSubNavBarMenu}>
-                <TouchableOpacity style={styles.subNavbarItens}>
+                <TouchableOpacity style={styles.subNavbarItens} onPress={() => router.push('./page_cadastro_produto')}>
                     <Text style={styles.subNavBarLabel}>Cadastro de Produtos</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.subNavbarItens}>

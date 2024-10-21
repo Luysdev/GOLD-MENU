@@ -1,9 +1,10 @@
-import {View, Text, StyleSheet, TouchableOpacity, Image} from "react-native"
+import {View, Text, StyleSheet, TouchableOpacity, Image, } from "react-native"
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Entypo from '@expo/vector-icons/Entypo';
 import logoImage from "../../assets/logo-gold-premium-branco.png"
+import { Link } from "expo-router";
 
 export default function ComponentNav() {   
     return (
@@ -12,6 +13,7 @@ export default function ComponentNav() {
                 <Image source={logoImage} style={styles.logo}/>
             </View>
             <TouchableOpacity style={styles.navBarItens}>
+                <Link href={"../pages/page_inicio"}></Link>
                 <MaterialCommunityIcons name="home-outline" size={90} color="white"/>
                 <Text style={styles.navBarLabel}>Início</Text>
             </TouchableOpacity>
