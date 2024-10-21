@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { Mesa } from "./Entidades/crud_mesa.js"
+import { UtilsCrud } from "./Entidades/utils_crud.js";
 
 const createApp = () => {
   const expressApp = express();
@@ -15,4 +16,5 @@ const createApp = () => {
 
 const app = createApp(); 
 
-Mesa(app); 
+UtilsCrud(app, 'mesa');
+UtilsCrud(app, 'funcionario');
