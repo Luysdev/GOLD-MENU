@@ -2,9 +2,7 @@ import pool from "../pg.js";
 
 export const UtilsCrud = (app, point) => {
     
-    /**
-     * document
-     */
+    // POST 
     function UtilsPost() {
         app.post(`/${point}`, async (req, res) => {
             
@@ -36,7 +34,7 @@ export const UtilsCrud = (app, point) => {
         });
     }
 
-    // READ (GET - listar todas os registros)
+    // READ 
     function UtilsGetAll() {
         app.get(`/${point}`, async (req, res) => {
             try {
@@ -49,7 +47,7 @@ export const UtilsCrud = (app, point) => {
         });
     };
     
-    // GET (obter um registro por ID)
+    // GET 
     function UtilsGetById() {
         app.get(`/${point}/:id`, async (req, res) => {
             const { id } = req.params;
@@ -66,7 +64,7 @@ export const UtilsCrud = (app, point) => {
         });
     }
 
-    // UPDATE (PUT - atualizar um registro por código)
+    // UPDATE
     function UtilsUpdate() {
         app.put(`/${point}/:id`, async (req, res) => {
             const { id } = req.params;
@@ -93,7 +91,7 @@ export const UtilsCrud = (app, point) => {
         });
     }
 
-    // DELETE (DELETE - remover um registro por código)
+    // DELETE 
     function UtilsDelete() {
         app.delete(`/${point}/:id`, async (req, res) => {
             const { id } = req.params;

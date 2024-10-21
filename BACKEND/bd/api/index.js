@@ -17,3 +17,4 @@ const createApp = () => {
 const app = createApp(); 
 
 UtilsCrud(app, 'mesa');
+UtilsCrud(app, 'funcionario');
