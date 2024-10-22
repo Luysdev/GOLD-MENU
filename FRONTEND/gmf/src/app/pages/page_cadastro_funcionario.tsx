@@ -1,6 +1,6 @@
 import {View, Text, StyleSheet, TextInput, Pressable} from "react-native"
-import ComponentNavBarLateral from "@/src/components/inicio/component_navbarlateral";
-import ComponentNavBarSuperiorAdministrador from "@/src/components/inicio/component_navbarsuperioraadministrador"
+import ComponentNavBarLateral from "@/src/components/menu/component_navbarlateral";
+import ComponentNavBarSuperiorAdministrador from "@/src/components/menu/component_navbarsuperioraadministrador"
 
 export default function CadastroFuncionario () {
     return (

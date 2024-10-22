@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, TouchableOpacity, Image, } from "react-native"
+import {View, Text, StyleSheet, TouchableOpacity, Image } from "react-native"
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import Ionicons from '@expo/vector-icons/Ionicons';

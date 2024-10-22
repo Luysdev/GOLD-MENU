@@ -1,6 +1,6 @@
 import {View, Text, StyleSheet} from "react-native"
-import ComponentNavBarLateral from "@/src/components/inicio/component_navbarlateral";
-import ComponentNavBarSuperiorCliente from "@/src/components/inicio/component_navbarsuperiorcliente"
+import ComponentNavBarLateral from "@/src/components/menu/component_navbarlateral";
+import ComponentNavBarSuperiorCliente from "@/src/components/menu/component_navbarsuperiorcliente"
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 
