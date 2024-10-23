@@ -4,12 +4,12 @@ export default function () {
     return (
         <View style={styles.containerPrincipal}>
             <View style={styles.containerCardProduto}>
-                <View style={styles.containerFotoProduto}>
-                    <Image source={FotoPizza} style={styles.fotoProduto}/>
+                <Image source={FotoPizza} style={styles.fotoProduto}/>
+                <View style={styles.containerDadosProduto}>
+                    <Text style={styles.labelNomeProduto}>Calabresa com Catupiry</Text>
+                    <Text style={styles.labelDescricaoProduto}>Calabresa, mussarela e catupiry</Text>
+                    <Text style={styles.labelPrecoProduto}>R$ 45,90</Text>
                 </View>
-                <Text style={styles.labelNomeProduto}>Calabresa com Catupiry</Text>
-                <Text style={styles.labelDescricaoProduto}>Calabresa, mussarela e catupiry</Text>
-                <Text style={styles.labelPrecoProduto}>R$ 45,90</Text>
                 <Pressable style={styles.textButton}>Adicionar</Pressable>
             </View>
         </View>
@@ -18,11 +18,9 @@ export default function () {
 
 const styles = StyleSheet.create({
     containerPrincipal: {
-        backgroundColor: "#white",
         flex: 1,
         display: "flex",
         justifyContent: "center",
-        flexDirection: "row",
     },
 
     containerCardProduto: {
@@ -30,46 +28,46 @@ const styles = StyleSheet.create({
         height: 290,
         backgroundColor: "white",
         display: "flex",
-        justifyContent: "center",
+        flexDirection: "row",
+        justifyContent: "space-between",
         alignItems: "center",
-        marginTop: 250,
-        marginLeft: 230,
+        marginBottom: 250,
+        marginLeft: 250,
         borderRadius: 20,
-    },
-
-    containerFotoProduto: {
-        display: "flex",
     },
 
     fotoProduto: {
         width: 310,
         height: 289,
         borderRadius: 20,
-        marginRight: 690,
-        marginTop: 218,
+    },
+
+    containerDadosProduto: {
+        justifyContent: "space-between",
+        alignItems: "flex-start",
+        marginRight: -46,
+        marginLeft: 15,
     },
 
     labelNomeProduto: {
         color: "black",
         fontSize: 45,
         fontWeight: 500,
-        bottom: 280,
-        marginLeft: 150,
+        marginBottom: 200,
     },
 
     labelDescricaoProduto: {
+        justifyContent:"space-between",
         color: "black",
-        fontSize: 28,
-        bottom: 255,
-        marginLeft: 60,
+        fontSize: 27,
+        marginTop: -180,
     },
 
     labelPrecoProduto: {
         color: "black",
         fontSize: 45,
         fontWeight: 700,
-        bottom: 200,
-        marginRight: 130,
+        marginTop: 70,
     },
 
     textButton: {
@@ -82,7 +80,7 @@ const styles = StyleSheet.create({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        bottom: 235,
-        left: 350,
+        marginTop: 190,
+        marginRight: 80,
     },
 });
