@@ -23,7 +23,7 @@ export default  function componentNav () {
                 <TouchableOpacity style={styles.subNavbarItens} onPress={() => router.push('./page_cadastro_produto')}>
                     <Text style={styles.subNavBarLabel}>Cadastro de Produtos</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.subNavbarItens}>
+                <TouchableOpacity style={styles.subNavbarItens} onPress={() => router.push('./page_cadastro_funcionario')}>
                     <Text style={styles.subNavBarLabel}>Cadastro de Usuário</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.subNavbarItens}>
@@ -38,7 +38,7 @@ export default  function componentNav () {
                 <TouchableOpacity style={styles.subNavbarItens}>
                     <Text style={styles.subNavBarLabel}>Pagamentos</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.subNavbarItens}>
+                <TouchableOpacity style={styles.subNavbarItens} onPress={() => router.push('./page_login')}>
                     <Text style={styles.subNavBarLabel}>Sair</Text>
                 </TouchableOpacity>
             </View>
