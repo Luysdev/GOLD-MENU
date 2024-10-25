@@ -6,10 +6,10 @@ export default function componentCardFuncionario() {
             <View style={styles.containerCardFuncionario}>
                 <View style={styles.containerDados}>
                     <View style={styles.containerDadosEsquerda}>
-                        <Text style={styles.labelNome}>Nome: Erick Augusto Warmling</Text>
-                        <Text style={styles.labelCpf}>CPF: 333.333.333-33</Text>
-                        <Text style={styles.labelTelefone}>Telefone: (49) 99999-9999</Text>
-                        <Text style={styles.labelCargo}>Cargo: Caixa</Text>
+                        <Text style={styles.labelNome}><Text style={styles.labelNomeBold}>Nome:</Text> Erick Augusto Warmling</Text>
+                        <Text style={styles.labelCpf}><Text style={styles.labelNomeBold}>CPF:</Text> 333.333.333-33</Text>
+                        <Text style={styles.labelTelefone}><Text style={styles.labelNomeBold}>Telefone:</Text> (49) 99999-9999</Text>
+                        <Text style={styles.labelCargo}><Text style={styles.labelNomeBold}>Cargo:</Text> Caixa</Text>
                     </View>
                     <View style={styles.containerDadosDireita}>
                         <Text style={styles.labelTextDataNascimento}>Data de Nascimento</Text>
@@ -59,6 +59,10 @@ const styles = StyleSheet.create({
     labelNome: {
         color: "black",
         fontSize: 35,
+    },
+
+    labelNomeBold: {
+        fontWeight: 600,
     },
 
     labelCpf: {
@@ -142,6 +146,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         marginTop: 40,
-        marginHorizontal: 90,
+        marginHorizontal: 80,
     },
 });
