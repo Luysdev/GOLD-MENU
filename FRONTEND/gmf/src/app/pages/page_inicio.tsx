@@ -12,9 +12,6 @@ export default function Inicio () {
         <View style={styles.containerPrincipal}>
             <ComponentNavBarLateral/>
             <ComponentNavBarSuperiorAdministrador/>
-            <View>
-                <ComponentCardFuncionario/>
-            </View>
         </View>
     );
 }
