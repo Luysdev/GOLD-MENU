@@ -1,6 +1,7 @@
 import {View, Text, StyleSheet, TouchableOpacity, Image, Pressable} from  "react-native"
 import FotoPizza from "../../assets/foto-pizza.png"
-export default function () {
+
+export default function componentCardProduto() {
     return (
         <View style={styles.containerPrincipal}>
             <View style={styles.containerCardProduto}>

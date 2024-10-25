@@ -5,12 +5,16 @@ import ComponentNavBarSuperiorCliente from "@/src/components/menu/component_navb
 import ComponentNavBarSuperiorAdministrador from "@/src/components/menu/component_navbarsuperioraadministrador"
 import ComponentNavBarSuperiorFuncionario from "@/src/components/menu/component_navbarsuperiorfuncionario"
 import ComponentCardProduto from "@/src/components/produtos/component_cardproduto"
+import ComponentCardFuncionario from "@/src/components/funcionarios/component_cardfuncionario"
 
 export default function Inicio () {
     return (
         <View style={styles.containerPrincipal}>
             <ComponentNavBarLateral/>
             <ComponentNavBarSuperiorAdministrador/>
+            <View>
+                <ComponentCardFuncionario/>
+            </View>
         </View>
     );
 }
