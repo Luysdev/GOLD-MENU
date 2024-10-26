@@ -1,21 +1,69 @@
 import {Text, View, StyleSheet, TextInput, Pressable, Image} from "react-native"
 import logoImage from "../../assets/logo-gold-premium.png"
+import axios from 'axios';
+import { useState } from "react";
+import { useRouter } from 'expo-router';
 
 export default function Login() {
+    const router  = useRouter();
+    const [cpf, setCpf] = useState('');
+    const [senha, setSenha] = useState('');
+    const [error, setError] = useState('');
+
+    const handleLogin = async () => {
+        setError(''); // Resetar erro
+        try {
+            const response = await axios.post('http://localhost:3333/funcionario/verificar-funcionario', {
+                cpf: cpf,
+            });
+
+            if (response.data && response.data.funcpassword) {
+                // Comparar a senha informada com a senha retornada
+                if (response.data.funcpassword === senha) {
+                    // Login bem-sucedido
+                    console.log("Login bem-sucedido!", response.data);
+                    router.push('/pages/page_inicio');
+                } else {
+                    setError('Senha incorreta.');
+                }
+            } else {
+                setError('Funcionário não encontrado.');
+            }
+        } catch (err) {
+            console.error('Erro ao fazer login:', err);
+            setError('Erro ao fazer login. Tente novamente.');
+        }
+    };
+
     return (
         <View style={styles.containerPrincipal}>
             <View style={styles.containerLogin}>
                 <Text style={styles.labelLogin}>LOGIN</Text>
                 <View style={styles.containerInput}>
                     <Text style={styles.labelCPF}>CPF</Text>
-                    <TextInput placeholder="Informe o seu CPF" style={styles.inputCPF}/>
+                    <TextInput
+                        placeholder="Informe o seu CPF"
+                        style={styles.inputCPF}
+                        value={cpf}
+                        onChangeText={setCpf}
+                        maxLength = {11}
+                    />
                     <Text style={styles.labelSenha}>SENHA</Text>
-                    <TextInput placeholder="Informe a sua senha" secureTextEntry={true} style={styles.inputSenha}/>
-                    <Pressable style={styles.textButton}>Entrar</Pressable>
+                    <TextInput
+                        placeholder="Informe a sua senha"
+                        secureTextEntry={true}
+                        style={styles.inputSenha}
+                        value={senha}
+                        onChangeText={setSenha}
+                    />
+                    {error ? <Text style={styles.errorText}>{error}</Text> : null}
+                    <Pressable style={styles.textButton} onPress={handleLogin}>
+                        <Text style={{ color: "white", fontSize: 35 }}>Entrar</Text>
+                    </Pressable>
                 </View>
             </View>
             <View style={styles.containerLogo}>
-                <Image source={logoImage}/>
+                <Image source={logoImage} />
             </View>
         </View>
     );
@@ -122,4 +170,11 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
+
+    errorText: {
+        color: "red",
+        fontSize: 20,
+        marginTop: 10,
+    },
+
 });

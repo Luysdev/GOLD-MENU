@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { Mesa } from "./Entidades/crud_mesa.js"
-import { UtilsCrud } from "./Entidades/utils_crud.js";
+import {ApiFuncionario} from "./Entidades/ApiFuncionario.js";
 
 const createApp = () => {
   const expressApp = express();
@@ -16,5 +15,4 @@ const createApp = () => {
 
 const app = createApp(); 
 
-UtilsCrud(app, 'mesa');
-UtilsCrud(app, 'funcionario');
+ApiFuncionario(app, 'funcionario');
