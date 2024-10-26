@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, TouchableOpacity, Image, Pressable} from  "react-native"
+import {View, Text, StyleSheet, TouchableOpacity, Pressable} from  "react-native"
 
 export default function componentCardFuncionario() {
     return (

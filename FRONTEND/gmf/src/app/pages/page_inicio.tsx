@@ -6,12 +6,17 @@ import ComponentNavBarSuperiorAdministrador from "@/src/components/menu/componen
 import ComponentNavBarSuperiorFuncionario from "@/src/components/menu/component_navbarsuperiorfuncionario"
 import ComponentCardProduto from "@/src/components/produtos/component_cardproduto"
 import ComponentCardFuncionario from "@/src/components/funcionarios/component_cardfuncionario"
+import ComponentProdutoCadastrado from "@/src/components/mensagens/component_produtocadastrado"
+import ComponentRemoverProduto from "@/src/components/mensagens/component_removerProduto"
 
 export default function Inicio () {
     return (
         <View style={styles.containerPrincipal}>
             <ComponentNavBarLateral/>
             <ComponentNavBarSuperiorAdministrador/>
+            <View>
+                <ComponentProdutoCadastrado/>
+            </View>
         </View>
     );
 }
