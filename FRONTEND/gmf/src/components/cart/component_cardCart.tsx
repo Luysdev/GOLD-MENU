@@ -52,7 +52,7 @@ const ComponentCarrinhoCard: React.FC<PedidoCardProps> = ({ numeroPedido, mesa, 
           <View key={index} style={styles.item}>
             <View style={styles.itemText}>
               {/* Imagem à esquerda do nome */}
-              <Image source={{ uri: produto.imagem }} style={styles.itemImage} />
+              <Image source={{ produto.imagem }} style={styles.itemImage} />
               <Text style={styles.itemName}>{produto.nome}</Text>
             </View>
             <View style={styles.itemDetails}>

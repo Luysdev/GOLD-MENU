@@ -1,8 +1,9 @@
 import { View, StyleSheet, Text, Image } from "react-native";
 import ComponenteNavSuperior from "@/src/components/menu/class_componente_nav_superior";
-import FotoHamburguer from "../../assets/hb.png";
-import Logo from "../../assets/logo-white.png";
 import ComponentCardProdutoSmall from "@/src/components/produtos/component_cardProdutoSmall";
+
+const FotoHamburguer = require("../../assets/hb.png");
+const Logo = require("../../assets/logo-white.png");
 
 export default function Inicio() {
     return (
@@ -12,15 +13,15 @@ export default function Inicio() {
             </View>
             <View style={styles.containerConteudo}>
                 <View style={styles.containerBannerPrincipal}>
-                    <Image 
-                        source={FotoHamburguer} 
-                        style={styles.styleImage}  
-                        resizeMode="cover" 
-                    />
-                    <Image
-                        source={Logo}
-                        style={styles.logoImage} // Adicionando estilo para o logo
-                    />
+                <Image 
+                    source={require("../../assets/hb.png")} 
+                    style={styles.styleImage}  
+                    resizeMode="cover" 
+                />
+                <Image 
+                    source={require("../../assets/logo-white.png")} 
+                    style={styles.logoImage}  
+                />
                 </View>
                 <Text style={styles.tituloPromocao}>PROMOÇÕES DO DIA</Text>
                 <View style={styles.containerPromo}>   
