@@ -2,9 +2,6 @@ import { View, StyleSheet, Text, Image } from "react-native";
 import ComponenteNavSuperior from "@/src/components/menu/class_componente_nav_superior";
 import ComponentCardProdutoSmall from "@/src/components/produtos/component_cardProdutoSmall";
 
-const FotoHamburguer = require("../../assets/hb.png");
-const Logo = require("../../assets/logo-white.png");
-
 export default function Inicio() {
     return (
         <View style={styles.containerPrincipal}>
@@ -13,7 +10,7 @@ export default function Inicio() {
             </View>
             <View style={styles.containerConteudo}>
                 <View style={styles.containerBannerPrincipal}>
-                <Image 
+                {/* <Image 
                     source={require("../../assets/hb.png")} 
                     style={styles.styleImage}  
                     resizeMode="cover" 
@@ -21,7 +18,7 @@ export default function Inicio() {
                 <Image 
                     source={require("../../assets/logo-white.png")} 
                     style={styles.logoImage}  
-                />
+                /> */}
                 </View>
                 <Text style={styles.tituloPromocao}>PROMOÇÕES DO DIA</Text>
                 <View style={styles.containerPromo}>   
