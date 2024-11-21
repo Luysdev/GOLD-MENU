@@ -61,9 +61,9 @@ export default function Login() {
                     </Pressable>
                 </View>
             </View>
-            <View style={styles.containerLogo}>
+            {/* <View style={styles.containerLogo}>
                 <Image source={logoImage} />
-            </View>
+            </View> */}
         </View>
     );
 }

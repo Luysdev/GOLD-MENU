@@ -4,11 +4,11 @@ import FotoHamburguer from "../../assets/hb.png";
 export default function ComponentCardProdutoSmall() { 
     return (
         <View style = {styles.containerPrincipal}>
-            <Image 
+            {/* <Image 
                         source={FotoHamburguer} 
                         style={styles.styleImage}  
                         resizeMode="cover" 
-            />
+            /> */}
             <Text style= {styles.textTitulop}>HAMBURGER</Text>
             <Text style= {styles.textPrice}>R$10,90</Text>
         </View>

@@ -46,11 +46,11 @@ const ComponentCardProduto: React.FC<ComponentCardProdutoProps> = ({
                     </TouchableOpacity>
                 )}
                 {/* Suporte para imagens locais ou remotas */}
-                <Image 
+                {/* <Image 
                     source={produto.imagem} 
                     style={styles.styleImage} 
                     resizeMode="cover" 
-                />
+                /> */}
                 <View style={styles.containerInfo}>
                     <Text style={styles.title}>{produto.produtodescricao}</Text>
                     <Text style={styles.description}>Estoque: {produto.produtoestoque}</Text>

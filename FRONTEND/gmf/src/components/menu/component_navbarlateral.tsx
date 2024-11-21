@@ -10,7 +10,7 @@ export default function ComponentNav() {
     return (
         <View style={styles.containerNavBarLateral}>
             <View style={styles.containerLogo}>
-                <Image source={logoImage} style={styles.logo} />
+                {/* <Image source={logoImage} style={styles.logo} /> */}
             </View>
             <TouchableOpacity style={styles.navBarItens}>
                 <Link href={"../pages/page_inicio"}>
