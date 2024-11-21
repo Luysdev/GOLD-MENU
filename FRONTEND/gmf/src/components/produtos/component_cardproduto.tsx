@@ -7,14 +7,14 @@ interface Produto {
     produtodescricao: string;
     produtoestoque: number;
     produtopreco: string;
-    imagem: string;  // Adicionando uma imagem fictícia ou removendo se não tiver
+    imagem: any; // Modificado para aceitar imagens locais (require)
 }
 
 interface ComponentCardProdutoProps {
     showDelete?: boolean;
     showAdd?: boolean;
     produto: Produto; // Usando a interface Produto para tipar as props
-    onDelete: any
+    onDelete: (codigo: number) => void; // Tipagem explícita para a função onDelete
 }
 
 const { width, height } = Dimensions.get("window");
@@ -28,13 +28,13 @@ const ComponentCardProduto: React.FC<ComponentCardProdutoProps> = ({
 
     const handleDelete = () => {
         if (onDelete) {
-            console.log(onDelete);
-            onDelete(12); 
+            console.log("Deletar produto:", produto.produtocodigo);
+            onDelete(produto.produtocodigo); 
         }
     };
 
     const handleAdd = () => {
-        console.log("Item adicionado");
+        console.log("Item adicionado:", produto.produtocodigo);
     };
 
     return (
@@ -45,12 +45,16 @@ const ComponentCardProduto: React.FC<ComponentCardProdutoProps> = ({
                         <Text style={styles.deleteButtonText}>X</Text>
                     </TouchableOpacity>
                 )}
-                {/* Ajuste para exibir imagem fictícia ou adicionar uma URL válida */}
-                <Image source={{ uri: produto.imagem || 'default-image-url' }} style={styles.styleImage} resizeMode="cover" />
+                {/* Suporte para imagens locais ou remotas */}
+                <Image 
+                    source={produto.imagem} 
+                    style={styles.styleImage} 
+                    resizeMode="cover" 
+                />
                 <View style={styles.containerInfo}>
                     <Text style={styles.title}>{produto.produtodescricao}</Text>
                     <Text style={styles.description}>Estoque: {produto.produtoestoque}</Text>
-                    <Text style={styles.value}>${produto.produtopreco}</Text>
+                    <Text style={styles.value}>R$ {produto.produtopreco}</Text>
                 </View>
                 {/* Botão Adicionar no canto inferior direito */}
                 {showAdd && (

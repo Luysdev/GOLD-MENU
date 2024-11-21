@@ -5,7 +5,7 @@ interface Produto {
   nome: string;
   quantidade: number;
   preco: number;
-  imagem: string;  // Adicionando a propriedade de imagem
+  imagem: any; // Alterado para suportar imagens locais com `require`
 }
 
 interface PedidoCardProps {
@@ -17,17 +17,14 @@ interface PedidoCardProps {
 }
 
 const ComponentCarrinhoCard: React.FC<PedidoCardProps> = ({ numeroPedido, mesa, data, produtos, total }) => {
-  // Estado para armazenar as quantidades de cada produto
   const [quantidades, setQuantidades] = useState(produtos.map((produto) => produto.quantidade));
 
-  // Função para aumentar a quantidade
   const aumentarQuantidade = (index: number) => {
     const novasQuantidades = [...quantidades];
     novasQuantidades[index] += 1;
     setQuantidades(novasQuantidades);
   };
 
-  // Função para diminuir a quantidade
   const diminuirQuantidade = (index: number) => {
     const novasQuantidades = [...quantidades];
     if (novasQuantidades[index] > 0) {
@@ -38,43 +35,35 @@ const ComponentCarrinhoCard: React.FC<PedidoCardProps> = ({ numeroPedido, mesa, 
 
   return (
     <View style={styles.card}>
-      {/* Header: Pedido Number, Mesa and Date */}
       <View style={styles.header}>
         <Text style={styles.title}>Pedido #{numeroPedido}</Text>
         <Text style={styles.mesa}>Mesa: {mesa}</Text>
         <Text style={styles.date}>Data: {data}</Text>
       </View>
 
-      {/* Products Section */}
       <ScrollView style={styles.body}>
         <Text style={styles.subtitle}>Produtos</Text>
         {produtos.map((produto, index) => (
           <View key={index} style={styles.item}>
             <View style={styles.itemText}>
-              {/* Imagem à esquerda do nome */}
-              <Image source={{ uri: produto.imagem }} style={styles.itemImage} />
+              {/* Imagem com suporte a arquivos locais */}
+              <Image source={produto.imagem} style={styles.itemImage} />
               <Text style={styles.itemName}>{produto.nome}</Text>
             </View>
             <View style={styles.itemDetails}>
-              {/* Botões de aumentar e diminuir quantidade */}
               <TouchableOpacity onPress={() => diminuirQuantidade(index)} style={styles.qtyButtonRed}>
                 <Text style={styles.qtyButtonTextDiminuir}>-</Text>
               </TouchableOpacity>
-
-              {/* Exibindo o número da quantidade */}
               <Text style={styles.itemQty}>{quantidades[index]}</Text>
-
               <TouchableOpacity onPress={() => aumentarQuantidade(index)} style={styles.qtyButtonGreen}>
                 <Text style={styles.qtyButtonTextAumentar}>+</Text>
               </TouchableOpacity>
-
               <Text style={styles.itemPrice}>R$ {produto.preco.toFixed(2)}</Text>
             </View>
           </View>
         ))}
       </ScrollView>
 
-      {/* Total and Finalizar Pedido Button */}
       <View style={styles.footer}>
         <Text style={styles.total}>TOTAL</Text>
         <Text style={styles.totalAmount}>R$ {total.toFixed(2)}</Text>
@@ -133,31 +122,31 @@ const styles = StyleSheet.create({
   },
   itemText: {
     flexDirection: "row",
-    alignItems: "center", // Alinha a imagem e o nome do produto
+    alignItems: "center",
     width: "60%",
   },
   itemName: {
     fontSize: 14,
-    width: "80%", // Ajustando o espaço do nome do produto
+    width: "80%",
   },
   itemImage: {
     width: 40,
     height: 40,
-    marginRight: 10, // Adicionando espaçamento entre a imagem e o nome
-    borderRadius: 8,  // Adicionando borda arredondada na imagem
+    marginRight: 10,
+    borderRadius: 8,
   },
   itemDetails: {
     flexDirection: "row",
-    justifyContent: "flex-start", // Ajustado para alinhar todos os elementos no início
-    alignItems: "center", // Centraliza verticalmente os itens
+    justifyContent: "flex-start",
+    alignItems: "center",
     width: "40%",
   },
   itemQty: {
     fontSize: 14,
-    marginHorizontal: 5, // Diminui o espaço entre os botões e o número
+    marginHorizontal: 5,
   },
   itemPrice: {
-    position: 'absolute',
+    position: "absolute",
     right: 0,
     fontSize: 14,
     color: "#555",
