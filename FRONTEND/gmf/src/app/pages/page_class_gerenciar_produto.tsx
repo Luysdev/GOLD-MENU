@@ -41,14 +41,14 @@ export default function PageGerenciarProduto() {
     const handleAddProduto = async () => {
         try {
             await axios.post('http://localhost:3333/produto/add-produto', {
-                produtocodigo: 22,  // ou outro valor apropriado
+                produtocodigo: Math.floor(Math.random() * 100) + 1, 
                 produtodescricao: descricaoProduto,
                 produtopreco: parseFloat(precoProduto),
                 produtoestoque: parseInt(estoqueProduto, 10),
                 produtocategoria: parseInt(categoriaProduto, 10),
             });
 
-            fetchProdutos();  // Atualiza a lista de produtos após adicionar
+            fetchProdutos();  
             handleCloseModal();
         } catch (error) {
             console.error("Erro ao adicionar o produto:", error);
