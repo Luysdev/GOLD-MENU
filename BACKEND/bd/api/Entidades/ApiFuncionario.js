@@ -25,9 +25,7 @@ export const ApiFuncionario = (app, point) => {
           }
         });
       }
-
-    //Default Crud
-    UtilsCrud(app, point);
+    //UtilsCrud
     getFuncionarioByCpf(point);
 
 }    

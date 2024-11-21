@@ -1,33 +1,95 @@
-import {View, Text, StyleSheet, TouchableOpacity} from "react-native"
-import Entypo from '@expo/vector-icons/Entypo';
-import ComponentNavBarLateral from "@/src/components/menu/component_navbarlateral";
-import ComponentNavBarSuperiorCliente from "@/src/components/menu/component_navbarsuperiorcliente"
-import ComponentNavBarSuperiorAdministrador from "@/src/components/menu/component_navbarsuperioraadministrador"
-import ComponentNavBarSuperiorFuncionario from "@/src/components/menu/component_navbarsuperiorfuncionario"
-import ComponentCardProduto from "@/src/components/produtos/component_cardproduto"
-import ComponentCardFuncionario from "@/src/components/funcionarios/component_cardfuncionario"
-import ComponentProdutoCadastrado from "@/src/components/mensagens/component_produtocadastrado"
-import ComponentRemoverProduto from "@/src/components/mensagens/component_removerProduto"
+import { View, StyleSheet, Text, Image } from "react-native";
+import ComponenteNavSuperior from "@/src/components/menu/class_componente_nav_superior";
+import FotoHamburguer from "../../assets/hb.png";
+import Logo from "../../assets/logo-white.png";
+import ComponentCardProdutoSmall from "@/src/components/produtos/component_cardProdutoSmall";
 
-export default function Inicio () {
+export default function Inicio() {
     return (
         <View style={styles.containerPrincipal}>
-            <ComponentNavBarLateral/>
-            <ComponentNavBarSuperiorAdministrador/>
-            <View>
-                <ComponentProdutoCadastrado/>
+            <View style={styles.nav}>
+                <ComponenteNavSuperior selectedIconIndex={0} />
+            </View>
+            <View style={styles.containerConteudo}>
+                <View style={styles.containerBannerPrincipal}>
+                    <Image 
+                        source={FotoHamburguer} 
+                        style={styles.styleImage}  
+                        resizeMode="cover" 
+                    />
+                    <Image
+                        source={Logo}
+                        style={styles.logoImage} // Adicionando estilo para o logo
+                    />
+                </View>
+                <Text style={styles.tituloPromocao}>PROMOÇÕES DO DIA</Text>
+                <View style={styles.containerPromo}>   
+                    <ComponentCardProdutoSmall />
+                    <ComponentCardProdutoSmall />
+                    <ComponentCardProdutoSmall />
+                </View>
             </View>
         </View>
     );
 }
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
     containerPrincipal: {
-        backgroundColor: "#E8E1D4",
         flex: 1,
+        flexDirection: "row", 
+        backgroundColor: "#E8E1D4",
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+    },
+    containerConteudo: {
+        flex: 1, 
+    },
+    texto: {
+        fontSize: 24,
+        color: 'black',
+    },
+    containerBannerPrincipal: {
+        width: "100%",
+        height: "40%",
+        overflow: 'hidden',
+        position: 'relative', 
+    },
+    styleImage: {
+        width: "100%",
+        height: "100%", 
+    },
+    logoImage: {
+        position: 'absolute', 
+        top: '30%', 
+        left: '46%', 
+        transform: [{ translateX: -50 }, { translateY: -50 }], 
+        width: "20%", 
+        height: "65%", 
+        aspectRatio: 1, 
+    },
+    containerPromo: {
+        height: "100%",
+        width: "100%",
         display: "flex",
-        justifyContent: "center",
         flexDirection: "row",
+        margin: 10,
+        justifyContent: "center",
+    },
+    tituloPromocao: {
+        fontSize: 40, 
+        fontWeight: 'bold',
+        alignSelf: "center", 
+        color: 'black',
+        textShadowColor: 'rgba(0, 0, 0, 0.3)',
+        textShadowOffset: { width: 2, height: 2 },
+        textShadowRadius: 3, 
+        marginTop: 20,
+    },
+    nav: {
+        width: "18%",
+        height: "100%",
     },
 });
-

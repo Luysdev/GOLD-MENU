@@ -62,15 +62,16 @@ export default  function componentNav () {
 const styles = StyleSheet.create({
     containerNavBarSuperior: {
         backgroundColor: "#85714D",
-        width: 1070,
+        width: "70%", // Define a largura do container
         height: 90,
         display: "flex",
-        justifyContent: "space-between",
         alignItems: "center",
         flexDirection: "row",
         position: "absolute",
-        marginLeft: 300,
+        top: 0, // Fixa no topo da tela
+        right: 0, // Alinha o container à direita
         padding: 10,
+        zIndex: 1, // Garante que fique acima de outros elementos
     },
 
     navBarItens: {
@@ -78,14 +79,14 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "row",
-        margin: 40,
+        marginHorizontal: 15, // Reduz o espaçamento horizontal entre os itens
     },
 
     navBarLabel: {
         color: "white",
         textAlign: "center",
         fontSize: 23,
-        marginLeft: 13,
+        marginLeft: 10, // Reduz a margem entre o ícone e o texto
     },
 
     containerSubNavBarMenu: {
@@ -96,8 +97,9 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         position: "absolute",
-        top: 85,
+        top: 85, // Ajusta a posição para que fique abaixo da barra superior
         left: 0,
+        zIndex: 1, // Garante que o menu lateral fique acima dos outros elementos
     },
 
     subNavbarItens: {

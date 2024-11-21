@@ -1,87 +1,144 @@
-import {View, Text, StyleSheet, TouchableOpacity, Image, Pressable} from  "react-native"
-import FotoPizza from "../../assets/foto-pizza.png"
+import React from "react";
+import { View, Text, StyleSheet, Image, Dimensions, ScrollView, TouchableOpacity } from "react-native";
 
-export default function componentCardProduto() {
-    return (
-        <View style={styles.containerPrincipal}>
-            <View style={styles.containerCardProduto}>
-                <Image source={FotoPizza} style={styles.fotoProduto}/>
-                <View style={styles.containerDadosProduto}>
-                    <Text style={styles.labelNomeProduto}>Calabresa com Catupiry</Text>
-                    <Text style={styles.labelDescricaoProduto}>Calabresa, mussarela e catupiry</Text>
-                    <Text style={styles.labelPrecoProduto}>R$ 45,90</Text>
-                </View>
-                <Pressable style={styles.textButton}>Adicionar</Pressable>
-            </View>
-        </View>
-    );
+// Definindo a interface para o produto
+interface Produto {
+    produtocodigo: number;
+    produtodescricao: string;
+    produtoestoque: number;
+    produtopreco: string;
+    imagem: string;  // Adicionando uma imagem fictícia ou removendo se não tiver
 }
 
+interface ComponentCardProdutoProps {
+    showDelete?: boolean;
+    showAdd?: boolean;
+    produto: Produto; // Usando a interface Produto para tipar as props
+    onDelete: any
+}
+
+const { width, height } = Dimensions.get("window");
+
+const ComponentCardProduto: React.FC<ComponentCardProdutoProps> = ({ 
+        showDelete = false, 
+        showAdd = true, 
+        produto, 
+        onDelete,
+    }) => {
+
+    const handleDelete = () => {
+        if (onDelete) {
+            console.log(onDelete);
+            onDelete(12); 
+        }
+    };
+
+    const handleAdd = () => {
+        console.log("Item adicionado");
+    };
+
+    return (
+        <ScrollView contentContainerStyle={styles.containerScroll}>
+            <View style={styles.containerPrincipal}>
+                {showDelete && (
+                    <TouchableOpacity style={styles.deleteButton} onPress={handleDelete}>
+                        <Text style={styles.deleteButtonText}>X</Text>
+                    </TouchableOpacity>
+                )}
+                {/* Ajuste para exibir imagem fictícia ou adicionar uma URL válida */}
+                <Image source={{ uri: produto.imagem || 'default-image-url' }} style={styles.styleImage} resizeMode="cover" />
+                <View style={styles.containerInfo}>
+                    <Text style={styles.title}>{produto.produtodescricao}</Text>
+                    <Text style={styles.description}>Estoque: {produto.produtoestoque}</Text>
+                    <Text style={styles.value}>${produto.produtopreco}</Text>
+                </View>
+                {/* Botão Adicionar no canto inferior direito */}
+                {showAdd && (
+                    <TouchableOpacity style={styles.addButton} onPress={handleAdd}>
+                        <Text style={styles.addButtonText}>Adicionar</Text>
+                    </TouchableOpacity>
+                )}
+            </View>
+        </ScrollView>
+    );
+};
+
 const styles = StyleSheet.create({
+    containerScroll: {
+        paddingHorizontal: 10,
+        paddingBottom: 5,
+    },
     containerPrincipal: {
-        flex: 1,
-        display: "flex",
-        justifyContent: "center",
-    },
-
-    containerCardProduto: {
-        width: 1000,
-        height: 290,
         backgroundColor: "white",
-        display: "flex",
+        width: "100%",
+        height: height * 0.2,
+        borderRadius: 15,
+        marginBottom: 15,
+        padding: 10,
         flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        marginBottom: 250,
-        marginLeft: 250,
-        borderRadius: 20,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+        elevation: 5,
+        position: "relative",
     },
-
-    fotoProduto: {
-        width: 310,
-        height: 289,
-        borderRadius: 20,
-    },
-
-    containerDadosProduto: {
-        justifyContent: "space-between",
-        alignItems: "flex-start",
-        marginRight: -46,
-        marginLeft: 15,
-    },
-
-    labelNomeProduto: {
-        color: "black",
-        fontSize: 45,
-        fontWeight: 500,
-        marginBottom: 200,
-    },
-
-    labelDescricaoProduto: {
-        justifyContent:"space-between",
-        color: "black",
-        fontSize: 27,
-        marginTop: -180,
-    },
-
-    labelPrecoProduto: {
-        color: "black",
-        fontSize: 45,
-        fontWeight: 700,
-        marginTop: 70,
-    },
-
-    textButton: {
-        backgroundColor: "#282217",
-        color: "white",
-        fontSize: 35,
-        width: 210,
-        height: 60,
-        borderRadius: 20,
-        display: "flex",
+    deleteButton: {
+        position: "absolute",
+        top: 10,
+        right: 10,
+        borderRadius: 15,
+        width: 30,
+        height: 30,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 190,
-        marginRight: 80,
+        zIndex: 10,
+    },
+    deleteButtonText: {
+        color: "black",
+        fontWeight: "bold",
+        fontSize: 16,
+    },
+    styleImage: {
+        width: "35%",
+        height: "100%",
+        borderRadius: 15,
+    },
+    containerInfo: {
+        width: "65%",
+        height: "100%",
+        padding: 10,
+        justifyContent: "space-between",
+    },
+    title: {
+        fontSize: 18,
+        fontWeight: "bold",
+    },
+    description: {
+        fontSize: 14,
+        fontWeight: "300",
+        color: "gray",
+    },
+    value: {
+        fontSize: 20,
+        fontWeight: "bold",
+        color: "#282217",
+    },
+    addButton: {
+        position: "absolute",
+        bottom: 10,
+        right: 10,
+        backgroundColor: "rgba(40, 34, 23, 1)",
+        paddingVertical: 10,
+        paddingHorizontal: 30,
+        borderRadius: 20,
+        zIndex: 5,
+    },
+    addButtonText: {
+        color: "white",
+        fontSize: 14,
+        fontWeight: "bold",
     },
 });
+
+export default ComponentCardProduto;

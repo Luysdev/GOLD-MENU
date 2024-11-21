@@ -5,7 +5,7 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
-export default  function componentNav () {
+export default  function ComponentNavFuncionario () {
     const [showSubNavBar, setShowSubNavBar] = useState(false);
 
     return (

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState } from "react";
 import { useRouter } from 'expo-router';
 
+
 export default function Login() {
     const router  = useRouter();
     const [cpf, setCpf] = useState('');
@@ -11,18 +12,16 @@ export default function Login() {
     const [error, setError] = useState('');
 
     const handleLogin = async () => {
-        setError(''); // Resetar erro
+        setError(''); 
         try {
             const response = await axios.post('http://localhost:3333/funcionario/verificar-funcionario', {
                 cpf: cpf,
             });
 
             if (response.data && response.data.funcpassword) {
-                // Comparar a senha informada com a senha retornada
                 if (response.data.funcpassword === senha) {
-                    // Login bem-sucedido
                     console.log("Login bem-sucedido!", response.data);
-                    router.push('/pages/page_inicio');
+                    router.push('/pages/page_inicio'); 
                 } else {
                     setError('Senha incorreta.');
                 }
