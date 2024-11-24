@@ -12,6 +12,7 @@ export default function RootLayout() {
       <Stack.Screen name="pages/page_class_cardapio_bebidas" options={{ headerShown: false }}/>
       <Stack.Screen name="pages/page_class_historico_pedido" options={{ headerShown: false }}/>
       <Stack.Screen name="pages/page_class_carrinho" options={{ headerShown: false }}/>
+      <Stack.Screen name="pages/page_class_pagamento" options={{ headerShown: false }}/>
     </Stack>
   );
 }

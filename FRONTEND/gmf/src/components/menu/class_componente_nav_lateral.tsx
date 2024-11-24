@@ -29,7 +29,7 @@ export default function ComponenteNavLateral() {
                             <Text style={style.titleOption}>Emissao de Relatorio</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={style.subContainerOption}>
-                            <Text style={style.titleOption}>Pagamentos</Text>
+                            <Text style={style.titleOption} onPress={() => navigation.navigate('pages/page_class_pagamento')}>Pagamentos</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={style.subContainerOption}>
                             <Text style={style.titleOption}>Sair</Text>
@@ -52,7 +52,7 @@ export default function ComponenteNavLateral() {
             </View>
 
             <View style={style.menuContainer}>
-                <TouchableOpacity style={style.containerOption}  onPress={() => navigation.navigate('pages/page_class_carrinho')}>
+                <TouchableOpacity style={style.containerOption}  onPress={() => navigation.navigate('pages/page_class_carrinho', {key: Date.now()})}>
                     <Text style={style.titleOption}>Carrinho</Text>
                 </TouchableOpacity>
             </View>

@@ -37,7 +37,7 @@ export default function PageGerenciarProduto() {
                 <ComponenteNavLateral/>
             </View>
             <ScrollView contentContainerStyle={styles.containerConteudo} showsVerticalScrollIndicator={false}>
-                <Text style={styles.tituloPage} >Gerenciar Protudutos</Text>
+                <Text style={styles.tituloPage} >Gerenciar Protudutos</Text >
                 {pedidos.map((pedido, index) => (
                     <ComponentPedidoCard
                         key={index}

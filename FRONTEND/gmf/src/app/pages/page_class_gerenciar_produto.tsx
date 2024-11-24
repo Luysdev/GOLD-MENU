@@ -102,6 +102,7 @@ export default function PageGerenciarProduto() {
                         showDelete={true}
                         showAdd={false}
                         onDelete={handleDeleteProduto} // Passa a função de deletar
+                        onAdd={() => {}}
                     />
                 ))}
 

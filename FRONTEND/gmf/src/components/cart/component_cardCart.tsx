@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from "react-native";
 
+// Definindo a interface Produto
 interface Produto {
   nome: string;
   quantidade: number;
   preco: number;
-  imagem: any; // Alterado para suportar imagens locais com `require`
+  imagem: string;
 }
 
 interface PedidoCardProps {
@@ -17,14 +18,18 @@ interface PedidoCardProps {
 }
 
 const ComponentCarrinhoCard: React.FC<PedidoCardProps> = ({ numeroPedido, mesa, data, produtos, total }) => {
+  // Estado para armazenar as quantidades dos produtos
   const [quantidades, setQuantidades] = useState(produtos.map((produto) => produto.quantidade));
+  const [totalCalculado, setTotalCalculado] = useState(total);
 
+  // Função para aumentar a quantidade de um produto
   const aumentarQuantidade = (index: number) => {
     const novasQuantidades = [...quantidades];
     novasQuantidades[index] += 1;
     setQuantidades(novasQuantidades);
   };
 
+  // Função para diminuir a quantidade de um produto
   const diminuirQuantidade = (index: number) => {
     const novasQuantidades = [...quantidades];
     if (novasQuantidades[index] > 0) {
@@ -33,21 +38,36 @@ const ComponentCarrinhoCard: React.FC<PedidoCardProps> = ({ numeroPedido, mesa, 
     setQuantidades(novasQuantidades);
   };
 
+  // Recalcular o total sempre que as quantidades mudarem
+  useEffect(() => {
+    const novoTotal = quantidades.reduce((acc, quantidade, index) => {
+      return acc + produtos[index].preco * quantidade;
+    }, 0);
+    setTotalCalculado(novoTotal);
+  }, [quantidades, produtos]); // O efeito será executado sempre que as quantidades ou os produtos mudarem.
+
+  // Recarregar as informações quando o componente for montado
+  useEffect(() => {
+    setQuantidades(produtos.map((produto) => produto.quantidade));
+  }, [produtos]); // Atualiza as quantidades sempre que os produtos mudarem
+
   return (
     <View style={styles.card}>
+      {/* Cabeçalho do pedido */}
       <View style={styles.header}>
         <Text style={styles.title}>Pedido #{numeroPedido}</Text>
         <Text style={styles.mesa}>Mesa: {mesa}</Text>
         <Text style={styles.date}>Data: {data}</Text>
       </View>
 
+      {/* Corpo do carrinho */}
       <ScrollView style={styles.body}>
         <Text style={styles.subtitle}>Produtos</Text>
         {produtos.map((produto, index) => (
           <View key={index} style={styles.item}>
             <View style={styles.itemText}>
-              {/* Imagem com suporte a arquivos locais */}
-              {/* <Image source={produto.imagem} style={styles.itemImage} /> */}
+              {/* Exibindo a imagem do produto */}
+              <Image source={{ uri: produto.imagem }} style={styles.itemImage} />
               <Text style={styles.itemName}>{produto.nome}</Text>
             </View>
             <View style={styles.itemDetails}>
@@ -58,15 +78,16 @@ const ComponentCarrinhoCard: React.FC<PedidoCardProps> = ({ numeroPedido, mesa, 
               <TouchableOpacity onPress={() => aumentarQuantidade(index)} style={styles.qtyButtonGreen}>
                 <Text style={styles.qtyButtonTextAumentar}>+</Text>
               </TouchableOpacity>
-              <Text style={styles.itemPrice}>R$ {produto.preco.toFixed(2)}</Text>
+              <Text style={styles.itemPrice}>R$ {produto.preco}</Text>
             </View>
           </View>
         ))}
       </ScrollView>
 
+      {/* Rodapé com total e botão de finalizar */}
       <View style={styles.footer}>
         <Text style={styles.total}>TOTAL</Text>
-        <Text style={styles.totalAmount}>R$ {total.toFixed(2)}</Text>
+        <Text style={styles.totalAmount}>R$ {totalCalculado.toFixed(2)}</Text>
         <TouchableOpacity style={styles.finalizarButton}>
           <Text style={styles.finalizarButtonText}>Finalizar Pedido</Text>
         </TouchableOpacity>
@@ -75,6 +96,7 @@ const ComponentCarrinhoCard: React.FC<PedidoCardProps> = ({ numeroPedido, mesa, 
   );
 };
 
+// Estilos do componente
 const styles = StyleSheet.create({
   card: {
     backgroundColor: "#fff",

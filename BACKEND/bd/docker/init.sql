@@ -18,7 +18,7 @@ CREATE TABLE Mesa (
 
 
 CREATE TABLE Pedido (
-	pedidocodigo SMALLINT PRIMARY KEY,
+	  pedidocodigo SMALLINT PRIMARY KEY,
   	pedidohora TIME,
   	pedidoobservacao TEXT,
   	pedidovalortotal DECIMAL(10,2),
