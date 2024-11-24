@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     labelMensagem: {
         color: "white",
         fontSize: 30,
-        fontWeight: 600,
+        fontWeight: '600',
         marginTop: 80,
 
     },

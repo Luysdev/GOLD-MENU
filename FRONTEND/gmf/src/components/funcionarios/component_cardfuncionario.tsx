@@ -3,7 +3,22 @@ import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from "react-nati
 
 const { height } = Dimensions.get("window");
 
-const ComponentCardUsuario = ({ showDelete = false, nome, cpf, telefone, cargo }) => {
+// Definindo os tipos das propriedades
+interface ComponentCardUsuarioProps {
+    showDelete?: boolean; // Propriedade opcional
+    nome: string;
+    cpf: string;
+    telefone: string;
+    cargo: string;
+}
+
+const ComponentCardUsuario: React.FC<ComponentCardUsuarioProps> = ({ 
+    showDelete = false, 
+    nome, 
+    cpf, 
+    telefone, 
+    cargo 
+}) => {
     const handleDelete = () => {
         console.log("Usuário excluído");
     };

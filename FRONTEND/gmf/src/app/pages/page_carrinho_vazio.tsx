@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     labelCarrinho: {
         color: "#282217",
         fontSize:55,
-        fontWeight: 600,
+        fontWeight: '600',
         marginRight: 760,  
         bottom: 260,
     },
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     labelText1: {
         color: "black",
         fontSize: 30,
-        fontWeight: 500,
+        fontWeight: '500',
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

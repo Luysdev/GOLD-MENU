@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     labelLogin: {
         fontSize: 50,
         color: "black",
-        fontWeight: 600,
+        fontWeight: '600',
         marginBottom: 60,
     },
 
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     labelCPF: {
         fontSize: 35,
         color: "black",
-        fontWeight: 500,
+        fontWeight: '500',
         marginBottom: 10,
         marginRight: 400,
     },
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
         width: 463,
         height: 63,
         fontSize: 25,
-        fontWeight: 600,
+        fontWeight: '600',
         borderRadius: 8,
         paddingLeft: 10,
         marginBottom: 30,
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     labelSenha: {
         fontSize: 35,
         color: "black",
-        fontWeight: 500,
+        fontWeight: '500',
         marginBottom: 10,
         marginRight: 340,
     },
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
         width: 463,
         height: 63,
         fontSize: 25,
-        fontWeight: 600,
+        fontWeight: '600',
         borderRadius: 8,
         paddingLeft: 10,
     },

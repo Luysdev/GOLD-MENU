@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     labelCadastroFuncionario: {
         color: "#282217",
         fontSize:55,
-        fontWeight: 600,
+        fontWeight: '600',
         marginTop: 350,
         marginRight: 360,
     },
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     labelNome: {
         color: "black",
         fontSize: 35,
-        fontWeight: 600,
+        fontWeight: '600',
         marginBottom: 15,
     },
 
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#282217",
         color: "white",
         fontSize: 25,
-        fontWeight: 400,
+        fontWeight: '400',
         width: 384,
         height: 63,
         borderRadius: 8,
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     labelCpf: {
         color: "black",
         fontSize: 35,
-        fontWeight: 600,
+        fontWeight: '600',
         marginBottom: 15,
     },
 
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#282217",
         color: "white",
         fontSize: 25,
-        fontWeight: 400,
+        fontWeight: '400',
         width: 384,
         height: 63,
         borderRadius: 8,
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     labelTelefone: {
         color: "black",
         fontSize: 35,
-        fontWeight: 600,
+        fontWeight: '600',
         marginBottom: 15,
     },
 
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     labelDataNascimento: {
         color: "black",
         fontSize: 35,
-        fontWeight: 600,
+        fontWeight: '600',
         marginBottom: 15,
     },
 
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     labelCargo: {
         color: "black",
         fontSize: 35,
-        fontWeight: 600,
+        fontWeight: '600',
         marginBottom: 15,
     },
 
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
     labelDataInicio: {
         color: "black",
         fontSize: 35,
-        fontWeight: 600,
+        fontWeight: '600',
         marginBottom: 15,
     },
 

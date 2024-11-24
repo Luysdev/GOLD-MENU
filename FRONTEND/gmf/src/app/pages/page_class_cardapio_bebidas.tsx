@@ -10,11 +10,11 @@ export default function PageCardapioBebidas() {
             </View>
             <ScrollView contentContainerStyle={styles.containerConteudo}>
                 <Text style={styles.tituloFood}>TEXTOP</Text>
+                {/* <ComponentCardProduto/>
                 <ComponentCardProduto/>
                 <ComponentCardProduto/>
                 <ComponentCardProduto/>
-                <ComponentCardProduto/>
-                <ComponentCardProduto/>
+                <ComponentCardProduto/> */}
             </ScrollView>
         </View>
     );

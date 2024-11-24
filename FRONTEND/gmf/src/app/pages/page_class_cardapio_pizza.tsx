@@ -48,6 +48,7 @@ export default function PageCardapioPizza() {
                                     produtopreco: produto.produtopreco,
                                     imagem: produto.imagem || 'https://guiadacozinha.com.br/wp-content/uploads/2019/11/hamburguer-mexicano.jpg', // Substitua com a URL da imagem, se necessário
                                 }}
+                                onDelete={() => {}}
                             />
                         </View>
                     ))}

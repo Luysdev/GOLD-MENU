@@ -2,12 +2,13 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    "esModuleInterop": true,  // Adicione essa linha para corrigir o erro
     "paths": {
       "@/*": [
         "./*"
       ]
     },
-    "jsx": "react-native"  // Adicione essa linha para permitir JSX no React Native
+    "jsx": "react-native"  // Já está correto para JSX no React Native
   },
   "include": [
     "**/*.ts",

@@ -10,7 +10,7 @@ export default function Inicio() {
             </View>
             <View style={styles.containerConteudo}>
                 <View style={styles.containerBannerPrincipal}>
-                {/* <Image 
+                <Image 
                     source={require("../../assets/hb.png")} 
                     style={styles.styleImage}  
                     resizeMode="cover" 
@@ -18,7 +18,7 @@ export default function Inicio() {
                 <Image 
                     source={require("../../assets/logo-white.png")} 
                     style={styles.logoImage}  
-                /> */}
+                />
                 </View>
                 <Text style={styles.tituloPromocao}>PROMOÇÕES DO DIA</Text>
                 <View style={styles.containerPromo}>   
