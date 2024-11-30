@@ -91,7 +91,8 @@ app.post('/carrinho', async (req, res) => {
   app.post('/carrinho/:id/produto', async (req, res) => {
     const { id } = req.params;
     const { produtocodigo, quantidade } = req.body;
-  
+    console.log('CAIUUUUUUUUUUUUUUU');
+    
     try {
       const result = await pool.query(
         `INSERT INTO Carrinho_Produto (carrinhocodigo, produtocodigo, quantidade)
@@ -124,11 +125,50 @@ app.post('/carrinho', async (req, res) => {
             JOIN Produto p ON cp.produtocodigo = p.produtocodigo
             WHERE cp.carrinhocodigo = $1`, [id]
         );
-    
+        console.log(result);
+        
         res.status(200).json(result.rows); // Enviar os dados para o front-end
         } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Erro ao obter produtos do carrinho' });
         }
   });
+
+  app.get('/pedidos/produtos/status/1', async (req, res) => {
+    try {
+        const query = `
+            SELECT 
+                ped.pedidocodigo,
+                ped.pedidohora,
+                ped.pedidoobservacao,
+                ped.pedidovalortotal,
+                p.produtocodigo,
+                p.produtodescricao,
+                p.produtopreco,
+                cp.quantidade,
+                (cp.quantidade * p.produtopreco) AS totalPorProduto
+            FROM Pedido ped
+            JOIN Carrinho c ON ped.pedidocodigo = c.pedidocodigo
+            JOIN Carrinho_Produto cp ON c.carrinhocodigo = cp.carrinhocodigo
+            JOIN Produto p ON cp.produtocodigo = p.produtocodigo
+            WHERE ped.pedidoStatus = 1;
+        `;
+
+        console.log(query);
+        
+        const result = await pool.query(query);
+        
+        
+        if (result.rows.length > 0) {
+            res.status(200).json(result.rows);
+        } else {
+            res.status(404).json({ message: "Nenhum pedido em andamento encontrado." });
+        }
+    } catch (error) {
+        console.error("Erro ao buscar produtos dos pedidos em andamento:", error);
+        res.status(500).json({ message: "Erro ao obter os produtos do carrinho." });
+    }
+  });
+
+
 }    

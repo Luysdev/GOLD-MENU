@@ -10,7 +10,6 @@ export default function PageCardapioHamburguer() {
     const [produtos, setProdutos] = useState<any[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
-    const [carrinhoId, setCarrinhoId] = useState<number | null>(null); // Para armazenar o carrinhoId
 
     useEffect(() => {
         const fetchProdutos = async () => {
@@ -33,11 +32,13 @@ export default function PageCardapioHamburguer() {
 
     // Função para adicionar o produto ao carrinho
     const handleAdd = async (produto: any) => {
+        console.log(produto);
+        
         if (1) {
             try {
                 const response = await axios.post(`http://localhost:3333/carrinho/1/produto`, {
                     produtocodigo: produto.produtocodigo,
-                    quantidade: 1, // Adicionando 1 unidade do produto
+                    quantidade: 1,
                 });
                 console.log(response.data.message); // Mensagem de sucesso
             } catch (error) {

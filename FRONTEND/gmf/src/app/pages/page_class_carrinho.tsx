@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios"; // Importando o axios para fazer as requisições HTTP
-import { useRoute } from '@react-navigation/native';  // Usando o hook useRoute para acessar parâmetros da navegação
+import axios from "axios";
+import { useRoute, useNavigation } from "@react-navigation/native";
+import { View, StyleSheet, ScrollView, Text } from "react-native";
 
 import ComponenteNavLateral from "@/src/components/menu/class_componente_nav_lateral";
 import ComponenteNavSuperior from "@/src/components/menu/class_componente_nav_superior";
-import { View, StyleSheet, ScrollView, Text } from "react-native";
 import ComponentCarrinhoCard from "@/src/components/cart/component_cardCart";
 
-// Definindo os parâmetros que a tela vai receber
 type PageCarrinhoParams = {
   key: number;
 };
 
-// Definindo a interface de produto
 interface Produto {
   produtocodigo: number;
   produtodescricao: string;
@@ -21,39 +19,53 @@ interface Produto {
   totalPorProduto: number;
   produtoestoque: number;
   produtocategoria: number;
-  imagem?: string; // Adicionando o campo imagem opcional
+  imagem?: string;
 }
 
 export default function PageCarrinho() {
-  const route = useRoute();  // Pegando os parâmetros da navegação
-  const [produtosCarrinho, setProdutosCarrinho] = useState<Produto[]>([]); // Estado para armazenar os produtos
-  const [carregando, setCarregando] = useState(true); // Estado para indicar o carregamento dos dados
+  const route = useRoute();
+  const navigation = useNavigation();
+  const { key } = route.params as PageCarrinhoParams;
 
-  // Tipando corretamente o 'route.params' com PageCarrinhoParams
-  const { key } = route.params as PageCarrinhoParams; // Agora sabemos que o 'key' é um número
+  const [produtosCarrinho, setProdutosCarrinho] = useState<Produto[]>([]);
+  const [carregando, setCarregando] = useState(true);
 
   useEffect(() => {
     const obterProdutosCarrinho = async () => {
+      console.log('aq');
+      
       try {
-        const response = await axios.get(`http://localhost:3333/carrinho/1/produtos`); // Altere o ID conforme necessário
-        const dadosCarrinho = response.data; // Obter os dados do carrinho
-
-        setProdutosCarrinho(dadosCarrinho); // Atualiza o estado com os dados da API
-        console.log(dadosCarrinho);
-        
+        const response = await axios.get(`http://localhost:3333/pedidos/produtos/status/1`);
+        if (response.data.length > 0) {
+          setProdutosCarrinho(response.data);
+        } else {  
+          setProdutosCarrinho([]); // Define o carrinho como vazio
+        }
       } catch (error) {
         console.error("Erro ao obter os produtos do carrinho:", error);
       } finally {
-        setCarregando(false); // Define carregando como falso após a requisição
+        setCarregando(false);
       }
     };
 
     obterProdutosCarrinho();
-  }, [key]);  // O efeito será executado sempre que o key mudar
+  }, [key]);
 
-  // Função para calcular o total dos produtos no carrinho
   const calcularTotal = (produtos: Produto[]): number => {
     return produtos.reduce((acc, produto) => acc + produto.totalPorProduto, 0);
+  };
+
+  const finalizarPedido = async () => {
+    try {
+      await axios.patch(`http://localhost:3333/pedido/1/status`, {
+        pedidoStatus: 2, // Alterar o status para concluído
+      });
+
+      alert("Pedido finalizado com sucesso!");
+    } catch (error) {
+      console.error("Erro ao finalizar o pedido:", error);
+      alert("Erro ao finalizar o pedido. Tente novamente.");
+    }
   };
 
   if (carregando) {
@@ -74,19 +86,25 @@ export default function PageCarrinho() {
       </View>
       <ScrollView contentContainerStyle={styles.containerConteudo} showsVerticalScrollIndicator={false}>
         <Text style={styles.title}>Carrinho</Text>
-        <ComponentCarrinhoCard
-          numeroPedido="1"
-          mesa="A1"
-          data="2024-11-24"
-          produtos={produtosCarrinho.map((produto) => ({
-            key: produto.produtocodigo.toString(),
-            nome: produto.produtodescricao,
-            quantidade: produto.quantidade,
-            preco: produto.produtopreco,
-            imagem: produto.imagem || 'https://guiadacozinha.com.br/wp-content/uploads/2019/11/hamburguer-mexicano.jpg',
-          }))}
-          total={calcularTotal(produtosCarrinho)}
-        />
+        
+        {produtosCarrinho.length === 0 ? (
+          <Text style={styles.mensagemTexto}>Nenhum pedido</Text>
+        ) : (
+          <ComponentCarrinhoCard
+            numeroPedido={key.toString()}
+            mesa="A1"
+            data="2024-11-24"
+            produtos={produtosCarrinho.map((produto) => ({
+              key: produto.produtocodigo.toString(),
+              nome: produto.produtodescricao,
+              quantidade: produto.quantidade,
+              preco: produto.produtopreco,
+              imagem: produto.imagem || "https://guiadacozinha.com.br/wp-content/uploads/2019/11/hamburguer-mexicano.jpg",
+            }))}
+            total={calcularTotal(produtosCarrinho)}
+            finalizarPedido={finalizarPedido}
+          />
+        )}
       </ScrollView>
     </View>
   );
@@ -118,5 +136,11 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 20,
+  },
+  mensagemTexto: {
+    fontSize: 16,
+    color: "black",
+    textAlign: "center",
+    marginTop: 20,
   },
 });

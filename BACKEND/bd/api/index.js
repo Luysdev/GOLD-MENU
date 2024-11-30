@@ -3,6 +3,7 @@ import cors from "cors";
 import {ApiFuncionario} from "./Entidades/ApiFuncionario.js";
 import { ApiProduto } from "./Entidades/ApiProduto.js";
 import { ApiCart } from "./Entidades/ApiCart.js";
+import { ApiPedido } from "./Entidades/ApiPedido.js";
 
 const createApp = () => {
   const expressApp = express();
@@ -20,3 +21,4 @@ const app = createApp();
 ApiFuncionario(app, 'funcionario');
 ApiProduto(app, 'produto');
 ApiCart(app, 'carrinho');
+ApiPedido(app, 'pedido');

@@ -2,9 +2,10 @@
     import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
     interface Produto {
-    nome: string;
-    quantidade: number;
-    valorUnitario: number;
+        produto_id: number;
+        produto_nome: string;
+        quantidade: number;
+        preco_unitario: number;
     }
 
     interface PedidoCardProps {
@@ -37,9 +38,9 @@
             {/* Products */}
             {produtos.map((produto, index) => (
             <View key={index} style={styles.item}>
-                <Text style={styles.itemName}>{produto.nome}</Text>
+                <Text style={styles.itemName}>{produto.produto_nome}</Text>
                 <Text style={styles.itemQty}>{produto.quantidade}</Text>
-                <Text style={styles.itemPrice}>R$ {produto.valorUnitario.toFixed(2)}</Text>
+                <Text style={styles.itemPrice}>R$ {produto.preco_unitario.toFixed(2)}</Text>
             </View>
             ))}
         </View>
@@ -53,7 +54,7 @@
             <TouchableOpacity style={styles.cancelButton}>
             <Text style={styles.cancelButtonText}>Cancelar</Text>
             </TouchableOpacity>
-            <Text style={styles.totalAmount}>R$ {total.toFixed(2)}</Text>
+            <Text style={styles.totalAmount}>R$ {total}</Text>
         </View>
         </View>
     );

@@ -15,10 +15,11 @@ interface PedidoCardProps {
   data: string;
   produtos: Produto[];
   total: number;
+  finalizarPedido: () => Promise<void>;
 }
 
-const ComponentCarrinhoCard: React.FC<PedidoCardProps> = ({ numeroPedido, mesa, data, produtos, total }) => {
-  // Estado para armazenar as quantidades dos produtos
+const ComponentCarrinhoCard: React.FC<PedidoCardProps> = ({ numeroPedido, mesa, data, produtos, total, finalizarPedido }) => {
+
   const [quantidades, setQuantidades] = useState(produtos.map((produto) => produto.quantidade));
   const [totalCalculado, setTotalCalculado] = useState(total);
 
@@ -88,7 +89,7 @@ const ComponentCarrinhoCard: React.FC<PedidoCardProps> = ({ numeroPedido, mesa, 
       <View style={styles.footer}>
         <Text style={styles.total}>TOTAL</Text>
         <Text style={styles.totalAmount}>R$ {totalCalculado.toFixed(2)}</Text>
-        <TouchableOpacity style={styles.finalizarButton}>
+        <TouchableOpacity style={styles.finalizarButton} onPress={finalizarPedido}>
           <Text style={styles.finalizarButtonText}>Finalizar Pedido</Text>
         </TouchableOpacity>
       </View>
